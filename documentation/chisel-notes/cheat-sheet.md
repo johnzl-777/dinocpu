@@ -60,6 +60,21 @@ x := Mux(selector, true_value, false_value)
 
 This creates a wire `x` which will have the `true_value` on it if `selector` is true and the `false_value` otherwise.
 
+Note that the selector *must be a boolean* or some condition that *evaluates to a boolean*. This is different from detecting the integers `1.U` and `0.U`. 
+
+## MuxCase
+
+```
+val x = Wire(UInt(4.W))
+x := MuxCase(0.U, 
+             Array((value === 0.U) -> "b1001".U,
+                   (value === 4.U) -> "b1101".U,
+                   (value === 2.U) -> "b1111".U))
+```
+The above creates an n-way mux which, depending on the value of `value`, can output certain other values. If none of the conditions specified become true, the `MuxCase` gives a default value, which is its first given argument of `0.U`.
+
+`MuxCase` is ideal when you want to check for multiple possible values on a wire, in contrast to `Mux` which only works for a singular boolean condition and can only choose between two values. 
+
 ## When-elsewhen-otherwise
 
 ```
