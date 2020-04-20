@@ -198,7 +198,7 @@ You can set a single wire of a bundle by using the `.` operator, kind of like ac
 In fact, that's a good way to think of bundles.
 They are kind of like `struct`s in C/C++.
 
-Let's use an complext number with a real and imaginary component as an example.
+Let's use an complex number with a real and imaginary component as an example.
 
 ```
 class Complex extends Bundle {
@@ -213,7 +213,7 @@ You can use this new "type" to create a wire:
 val wire = Wire(new Complex())
 ```
 
-And you can set each component of the wire separtely:
+And you can set each component of the wire separately:
 
 ```
 wire.real := 3.S
